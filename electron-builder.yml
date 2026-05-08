@@ -1,0 +1,48 @@
+appId: com.spectreverse.simulatordeck
+productName: Spectreverse Simulator Deck
+files:
+  - index.html
+  - styles.css
+  - manifest.webmanifest
+  - service_worker.js
+  - runtime_config.json
+  - src/**/*
+  - data/**/*
+  - electron/**/*
+
+directories:
+  buildResources: build
+  output: dist
+
+artifactName: "${productName}-${version}-${os}-${arch}.${ext}"
+asar: true
+compression: maximum
+
+extraMetadata:
+  main: electron/main.cjs
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  icon: build/icon.ico
+  requestedExecutionLevel: asInvoker
+  signAndEditExecutable: false
+  publisherName: Spectreverse Team
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Spectreverse Simulator Deck
+  uninstallDisplayName: Spectreverse Simulator Deck
+  deleteAppDataOnUninstall: false
+
+portable:
+  artifactName: "${productName}-${version}-portable-${arch}.${ext}"
