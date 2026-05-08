@@ -1,0 +1,92 @@
+{
+  "name": "spectreverse-simulator-deck",
+  "version": "1.5.8-win-installer",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "author": {
+    "name": "Spectreverse Team",
+    "email": "maintainer@spectreverse.local"
+  },
+  "homepage": "https://example.com/spectreverse-simulator-deck",
+  "description": "Spectreverse v1.5.8: Windows desktop installer-ready build with high-cap structure ecology, safe auto-governor, nested phenomena memory index, and spectral morphogenesis browser deck.",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "check": "node --check service_worker.js && node --check src/anti_clone_pressure.js && node --check src/app.js && node --check src/asymptotic_float.js && node --check src/autonomy_governor.js && node --check src/benchmark_ledger.js && node --check src/browser_qa.js && node --check src/candidate_brain.js && node --check src/candidate_pool.js && node --check src/color_spaces.js && node --check src/corpus_compare.js && node --check src/cross_pollination.js && node --check src/deck_ui.js && node --check src/dream_search.js && node --check src/engine.worker.js && node --check src/engine_core.js && node --check src/frontier_sampler.js && node --check src/genome_index.js && node --check src/gl.js && node --check src/growth_manager.js && node --check src/import_export.js && node --check src/journal.js && node --check src/lattice_brain.js && node --check src/lattice_transformer_layer.js && node --check src/leech_guard.js && node --check src/lineage.js && node --check src/livingword_bundle.js && node --check src/livingword_packet.js && node --check src/livingword_schema.js && node --check src/metatile_grammar.js && node --check src/nested_phenomena.js && node --check src/objective_profiles.js && node --check src/opponent_transform.js && node --check src/operator_fitness.js && node --check src/performance_tier.js && node --check src/perceptual_spectrum.js && node --check src/persistent_children.js && node --check src/population_manager.js && node --check src/prng.js && node --check src/replay.js && node --check src/replay_verifier.js && node --check src/runtime_config.js && node --check src/save_garden.js && node --check src/schema.js && node --check src/shaders.js && node --check src/sleep_distill.js && node --check src/smart_governor.js && node --check src/spectral_attention.js && node --check src/spectral_candidate_brain.js && node --check src/spectral_genome.js && node --check src/spectral_overlay.js && node --check src/spectral_roles.js && node --check src/spectral_witness.js && node --check src/stagnation_detector.js && node --check src/storage.js && node --check src/structure_archive.js && node --check src/survival_manager.js && node --check src/visual_debug.js && node --check src/witness_eye.js && node --check src/world.js && node --check src/world_store.js && node --check src/world_structures.js",
+    "desktop:start": "electron .",
+    "desktop:build": "electron-builder --linux AppImage deb --win nsis portable",
+    "desktop:build:linux": "electron-builder --linux AppImage deb",
+    "desktop:build:win": "electron-builder --win nsis portable",
+    "desktop:build:win:dir": "electron-builder --win dir",
+    "desktop:dist": "electron-builder --linux AppImage deb --win nsis portable"
+  },
+  "build": {
+    "appId": "com.spectreverse.simulatordeck",
+    "productName": "Spectreverse Simulator Deck",
+    "files": [
+      "index.html",
+      "styles.css",
+      "manifest.webmanifest",
+      "service_worker.js",
+      "runtime_config.json",
+      "src/**/*",
+      "data/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "maintainer": "Spectreverse Team <maintainer@spectreverse.local>",
+      "category": "Science"
+    },
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "asar": true,
+    "compression": "maximum",
+    "extraMetadata": {
+      "main": "electron/main.cjs"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "requestedExecutionLevel": "asInvoker",
+      "signAndEditExecutable": false,
+      "publisherName": "Spectreverse Team"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Spectreverse Simulator Deck",
+      "uninstallDisplayName": "Spectreverse Simulator Deck",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable-${arch}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.0.0",
+    "electron-builder": "^26.8.1"
+  }
+}

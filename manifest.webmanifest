@@ -1,0 +1,11 @@
+{
+  "name": "Spectreverse Simulator Deck",
+  "short_name": "Spectreverse",
+  "description": "Browser-native Spectreverse simulation deck with local saves, memory ecology, and autonomy loops.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#09080d",
+  "theme_color": "#6ee7ff",
+  "icons": []
+}

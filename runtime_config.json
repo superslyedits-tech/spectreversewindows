@@ -1,0 +1,267 @@
+{
+  "name": "Spectreverse Simulator Deck v1.5.8 Autonomy/Nesting Patch",
+  "version": "1.5.8-autonomy-nesting",
+  "defaultViewMode": "littlebird",
+  "witness": {
+    "size": 128,
+    "intervalMs": 250
+  },
+  "engine": {
+    "defaultSpeed": "normal",
+    "defaultBrainMode": "learn",
+    "candidateSoftCap": 384,
+    "structureSoftCap": 1200,
+    "autosaveEveryTicks": 48,
+    "snapshotEveryMs": 400,
+    "candidateBrainEveryTicks": 2,
+    "dreamEveryTicks": 30
+  },
+  "candidateBrain": {
+    "proposalLimit": 40,
+    "hotspotLimit": 10,
+    "bridgeLimit": 14,
+    "fountainLimit": 10,
+    "motionLimit": 10
+  },
+  "dreamSearch": {
+    "backgroundBudget": 8,
+    "idleBudget": 16,
+    "dreamModeBudget": 28,
+    "promotionThreshold": 0.42,
+    "ledgerLimit": 288,
+    "bestLimit": 36
+  },
+  "journal": {
+    "limit": 768
+  },
+  "operatorFitness": {
+    "limit": 96
+  },
+  "memoryEcology": {
+    "sleepEveryTicks": 96,
+    "distillEveryTicks": 144,
+    "atlasMemoryLimit": 128,
+    "stableStructureLimit": 192,
+    "foreignStructureLimit": 96,
+    "saveGardenLimit": 24
+  },
+  "data": {
+    "world": "./data/seed_world.json",
+    "atlas": "./data/seed_atlas.json"
+  },
+  "viewModes": {
+    "littlebird": {
+      "id": 0,
+      "scale": 0.82,
+      "label": "littlebird"
+    },
+    "globalbird": {
+      "id": 1,
+      "scale": 0.68,
+      "label": "globalbird"
+    },
+    "spectre": {
+      "id": 2,
+      "scale": 0.92,
+      "label": "spectre"
+    }
+  },
+  "features": {
+    "browserEngineWorker": true,
+    "mutableWorldStore": true,
+    "indexedDbSaves": true,
+    "witnessAttribution": true,
+    "witnessCauseBuffers": true,
+    "candidateEcology": true,
+    "candidateBrain": true,
+    "shadowTesting": true,
+    "dreamSearchMode": true,
+    "lineageMemory": true,
+    "eventJournal": true,
+    "operatorFitness": true,
+    "sleepDistillMode": true,
+    "importAsMemoryQuarantine": true,
+    "saveGarden": true,
+    "corpusCompare": true,
+    "livingWordBundleExport": true,
+    "latticeTransformerLayer": true,
+    "leechGuard": true,
+    "localImportExport": true,
+    "pwaOfflineCache": true,
+    "deterministicReplay": true,
+    "survivalManager": true,
+    "benchmarkLedger": true,
+    "genomeIndex": true,
+    "objectiveProfiles": true,
+    "populationMode": true,
+    "crossPollination": true,
+    "livingWordPacketImport": true,
+    "serviceWorkerCache": true,
+    "browserQaDiagnostics": true,
+    "replayVerifier": true,
+    "visualDebugOverlay": true,
+    "deepSaveGarden": true,
+    "formalLivingWordPacketSchema": true,
+    "persistentChildWorlds": true,
+    "adaptivePerformanceTiering": true,
+    "visibilitySleep": true,
+    "storageQuotaAwareness": true,
+    "spectralMorphogenesis": true,
+    "structureArchive": true,
+    "antiStagnation": true,
+    "autonomyGovernor": true,
+    "nestedPhenomenaIndex": true
+  },
+  "structurePolicy": {
+    "liveSoftCap": 1200,
+    "liveHardCap": 1500,
+    "archiveSoftCap": 7000,
+    "fossilSoftCap": 3500,
+    "genomeSoftCap": 6000,
+    "retireInsteadOfDelete": true,
+    "retireBatchSize": 72
+  },
+  "stagnation": {
+    "enabled": true,
+    "windowTicks": 512,
+    "minGenomeDelta": 3,
+    "maxQueueEmptyTicks": 192,
+    "minDreamYield": 0.001,
+    "minPopulationBest": 0.01,
+    "maxCloneRatio": 0.62,
+    "triggerModes": [
+      "frontier",
+      "morphogenesis",
+      "anti_clone"
+    ]
+  },
+  "spectral": {
+    "enabled": true,
+    "reasoningSpace": "oklab_oklch_opponent",
+    "renderSpace": "rgb",
+    "assignOnImport": true,
+    "updateEveryTicks": 8,
+    "neutralAxisEpsilon": 0.035,
+    "outOfGamutAllowed": true,
+    "outOfGamutPenalty": 0.08,
+    "unknownResidualThreshold": 0.22
+  },
+  "opponentAxes": {
+    "blackWhite": true,
+    "redGreen": true,
+    "yellowBlue": true
+  },
+  "antiClone": {
+    "enabled": true,
+    "nodeSetRepeatPenalty": 0.12,
+    "genomeRepeatPenalty": 0.16,
+    "routeDominancePenalty": 0.1,
+    "hotspotDominancePenalty": 0.1,
+    "cooldownTicks": 192
+  },
+  "frontierSampling": {
+    "enabled": true,
+    "budgetPerCycle": 24,
+    "underusedTileWeight": 0.3,
+    "coldEdgeWeight": 0.22,
+    "rejectedNearMissWeight": 0.2,
+    "rareRoleCombinationWeight": 0.18,
+    "spectralGapWeight": 0.26
+  },
+  "metatileGrammar": {
+    "enabled": true,
+    "maxVirtualCandidates": 96,
+    "commitVirtualOnlyAfterShadow": true,
+    "allowedTransforms": [
+      "split",
+      "fuse",
+      "invert",
+      "wrap",
+      "bridge",
+      "flower",
+      "seed",
+      "shed",
+      "echo",
+      "afterimage",
+      "neutral_axis_cross"
+    ]
+  },
+  "spectralCandidateBrain": {
+    "proposalLimit": 24
+  },
+  "survival": {
+    "memoryPressureWarn": 0.7,
+    "memoryPressureEmergency": 0.9,
+    "browserBudgetBytes": 150994944,
+    "distillCooldownTicks": 48
+  },
+  "replay": {
+    "limit": 2048
+  },
+  "benchmarks": {
+    "intervalTicks": 64,
+    "limit": 256
+  },
+  "genomeIndex": {
+    "limit": 1536
+  },
+  "population": {
+    "intervalTicks": 80,
+    "childCount": 5,
+    "candidateLimit": 36,
+    "promoteLimit": 10
+  },
+  "objectives": {
+    "defaultProfile": "balanced"
+  },
+  "livingWordPacket": {
+    "limit": 72
+  },
+  "performanceTier": {
+    "sampleFrames": 40,
+    "targetFps": 45
+  },
+  "childWorlds": {
+    "limit": 24
+  },
+  "browserQa": {
+    "bootDiagnostics": true,
+    "storageEstimate": true,
+    "moduleWorkerProbe": true
+  },
+  "replayVerifier": {
+    "fullExportRequiredForSeedProof": true,
+    "tailProofAcceptedAsPartial": true
+  },
+  "autonomy": {
+    "enabled": true,
+    "intervalTicks": 16,
+    "allowedModes": [
+      "learn",
+      "dream",
+      "population",
+      "frontier",
+      "morphogenesis",
+      "anti_clone",
+      "spectral",
+      "sleep",
+      "distill"
+    ],
+    "memoryPressureDistill": 0.82,
+    "structurePressureSleep": 0.86,
+    "queueLowWater": 8,
+    "queueHighWater": 240,
+    "spectralGapTrigger": 4,
+    "populationEveryTicks": 160,
+    "dreamEveryTicks": 96
+  },
+  "nestedPhenomena": {
+    "enabled": true,
+    "updateEveryTicks": 32,
+    "maxInputStructures": 180,
+    "maxNests": 120,
+    "maxComponents": 7,
+    "minOverlap": 1,
+    "minNestedScore": 0.42
+  }
+}

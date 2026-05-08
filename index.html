@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectreverse Simulator Deck</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <canvas id="world" aria-label="Spectreverse WebGL simulation canvas"></canvas>
+  <canvas id="debugOverlay" aria-hidden="true"></canvas>
+
+  <section id="hud" class="panel" aria-live="polite">
+    <header class="panel-header">
+      <div>
+        <h1>Spectreverse Simulator Deck</h1>
+        <p id="status">booting browser-native memory ecology…</p>
+      </div>
+      <button type="button" id="collapseHud" title="Collapse deck">–</button>
+    </header>
+
+    <nav id="viewModes" class="button-row" aria-label="Perspective">
+      <button type="button" data-view-mode="littlebird" aria-pressed="true">littlebird</button>
+      <button type="button" data-view-mode="globalbird" aria-pressed="false">globalbird</button>
+      <button type="button" data-view-mode="spectre" aria-pressed="false">spectre</button>
+    </nav>
+
+    <div class="controls-grid" aria-label="Simulator controls">
+      <button type="button" id="runPause">Run</button>
+      <button type="button" id="stepOnce">Step</button>
+      <label>Speed
+        <select id="speedSelect">
+          <option value="idle">idle</option>
+          <option value="normal" selected>normal</option>
+          <option value="busy">busy</option>
+          <option value="max">max</option>
+        </select>
+      </label>
+      <label>Brain
+        <select id="brainModeSelect">
+          <option value="watch">watch</option>
+          <option value="learn" selected>learn</option>
+          <option value="auto">auto</option>
+          <option value="override">override</option>
+          <option value="dream">dream</option>
+          <option value="sleep">sleep</option>
+          <option value="distill">distill</option>
+          <option value="population">population</option>
+          <option value="frontier">frontier</option>
+          <option value="morphogenesis">morphogenesis</option>
+          <option value="anti_clone">anti_clone</option>
+          <option value="spectral">spectral</option>
+        </select>
+      </label>
+      <label>Objective
+        <select id="objectiveProfileSelect">
+          <option value="balanced" selected>balanced</option>
+          <option value="stability">stability</option>
+          <option value="novelty">novelty</option>
+          <option value="closure">closure</option>
+          <option value="living_word">living word</option>
+          <option value="portability">portability</option>
+          <option value="compression">compression</option>
+          <option value="open_world">open world</option>
+          <option value="spectral_morphogenesis">spectral morphogenesis</option>
+          <option value="anti_stagnation">anti stagnation</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="button-row utility-row" aria-label="Save and import export controls">
+      <button type="button" id="manualSave">Save</button>
+      <button type="button" id="exportCompact">Export compact</button>
+      <button type="button" id="exportFull">Export full</button>
+      <button type="button" id="importSave">Load world</button>
+      <button type="button" id="importMemory">Import memory</button>
+      <button type="button" id="distillNow">Distill</button>
+      <button type="button" id="exportLivingWord">Export Living Word</button>
+      <button type="button" id="importLivingWord">Import LW packet</button>
+      <button type="button" id="verifyReplay">Verify replay</button>
+      <label class="check-control"><input type="checkbox" id="debugToggle" checked /> Debug overlay</label>
+      <button type="button" id="resetSeed">Reset</button>
+      <input id="importFile" type="file" accept="application/json,.json,.spectreverse" hidden />
+      <input id="memoryFile" type="file" accept="application/json,.json,.spectreverse" multiple hidden />
+      <input id="livingWordFile" type="file" accept="application/json,.json,.bundle,.livingword" hidden />
+    </div>
+
+    <dl id="metrics" class="metrics"></dl>
+  </section>
+
+  <section id="deck" class="panel" aria-label="Simulator deck readouts">
+    <div class="deck-grid">
+      <article>
+        <h2>Candidate queue</h2>
+        <ol id="candidateList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Committed structures</h2>
+        <ol id="commitList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Witness heat</h2>
+        <ol id="hotspotList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Witness attribution</h2>
+        <ol id="attributionList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Candidate brain</h2>
+        <ol id="brainList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Dream/search ledger</h2>
+        <ol id="dreamList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Lineage</h2>
+        <ol id="lineageList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Journal</h2>
+        <ol id="journalList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Operator fitness</h2>
+        <ol id="operatorList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Sleep / Distill</h2>
+        <ol id="sleepList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Save garden</h2>
+        <ol id="gardenList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Corpus compare</h2>
+        <ol id="corpusList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Survival</h2>
+        <ol id="survivalList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Replay proof</h2>
+        <ol id="replayList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Benchmarks</h2>
+        <ol id="benchmarkList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Genome index</h2>
+        <ol id="genomeList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Population</h2>
+        <ol id="populationList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Living Word packets</h2>
+        <ol id="packetList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Offline</h2>
+        <ol id="offlineList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Browser QA</h2>
+        <ol id="browserQaList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Replay verifier</h2>
+        <ol id="replayVerifyList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Performance tier</h2>
+        <ol id="performanceList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Child worlds</h2>
+        <ol id="childWorldList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Nested phenomena</h2>
+        <ol id="nestedPhenomenaList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Visual debug</h2>
+        <ol id="visualDebugList" class="mono-list"></ol>
+      </article>
+      <article>
+        <h2>Memory</h2>
+        <dl id="memoryMetrics" class="micro-metrics"></dl>
+      </article>
+    </div>
+  </section>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
